@@ -62,7 +62,7 @@ Total de cafés disponibles:
 
 <section class="products-grid-container">
 
-<xsl:apply-templates select="cafeteria/cafes/cafe">
+<xsl:apply-templates select="//cafe">
 <xsl:sort select="precio" data-type="number"/>
 </xsl:apply-templates>
 
@@ -157,3 +157,4 @@ Correo contacto:
 </xsl:template>
 
 </xsl:stylesheet>
+
