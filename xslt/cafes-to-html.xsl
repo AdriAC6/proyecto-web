@@ -23,11 +23,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <article class="product-card-full">
     <div class="card-image">
 
-    <img alt="Imagen del café">
-        <xsl:attribute name="src">
-        ../<xsl:value-of select="imagen"/>
-        </xsl:attribute>
-    </img>
+    <img alt="Imagen del café" src="../{imagen}" />
 
     <xsl:if test="@destacado='true'">
         <span class="tag-new">Nuevo</span>
@@ -62,6 +58,4 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 </xsl:template>
 
-
 </xsl:stylesheet>
-
