@@ -118,56 +118,36 @@ Correo contacto:
 
 <xsl:template match="cafe">
 
-<article class="product-card-full">
+<div class="product-card">
 
-<div class="card-image">
-
-<img alt="Imagen del café">
-
+<img>
 <xsl:attribute name="src">
 <xsl:text>../</xsl:text>
 <xsl:value-of select="imagen"/>
 </xsl:attribute>
-
 </img>
 
-<xsl:if test="@destacado='true'">
-<span class="tag-new">Nuevo</span>
-</xsl:if>
-
-</div>
-
-<div class="card-details">
-
-<h2>
-
-<xsl:value-of select="position()"/>.
+<h3>
 <xsl:value-of select="nombre"/>
+</h3>
 
-</h2>
-
-<p class="description">
-
-<xsl:value-of select="descripcion"/>
-
+<p class="price">
+<xsl:value-of select="precio"/> €
 </p>
 
-<div class="price-action">
+<div class="overlay">
 
-<span class="price">
+<h3>
+<xsl:value-of select="nombre"/>
+</h3>
 
-<xsl:value-of select="precio"/> €
-
-</span>
-
-<button class="btn-buy">Añadir</button>
+<button class="overlay-button">Agregar al carrito</button>
 
 </div>
 
 </div>
-
-</article>
 
 </xsl:template>
 
 </xsl:stylesheet>
+
