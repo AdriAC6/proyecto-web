@@ -25,7 +25,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <img alt="Imagen del café">
         <xsl:attribute name="src">
-        /img/<xsl:value-of select="imagen"/>
+        ../<xsl:value-of select="imagen"/>
         </xsl:attribute>
     </img>
 
@@ -64,3 +64,4 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 </xsl:stylesheet>
+
