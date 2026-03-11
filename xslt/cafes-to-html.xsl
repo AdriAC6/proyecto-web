@@ -3,9 +3,9 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="html" encoding="UTF-8" indent="yes" doctype-system="about:legacy-compat"/>
+<xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
-<xsl:strip-space elements="*"/>
+
 
 <xsl:variable name="totalCafes" select="count(//cafe)"/>
 
@@ -171,3 +171,4 @@ Correo contacto:
 </xsl:template>
 
 </xsl:stylesheet>
+
