@@ -3,11 +3,12 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="html" encoding="UTF-8" indent="yes" doctype-system="about:legacy-compat"/>
+<xsl:output method="html" encoding="UTF-8" indent="yes"
+doctype-system="about:legacy-compat"/>
 
 <xsl:strip-space elements="*"/>
 
-<xsl:variable name="totalCafes" select="count(//cafe)"/>
+<xsl:variable name="totalCafes" select="count(cafeteria/cafes/cafe)"/>
 
 <xsl:template match="/">
 
@@ -17,11 +18,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <title>Productos - Le Nid de Café</title>
 
-<link rel="stylesheet" href="../CSS/index.css"/>
 <link rel="stylesheet" href="../CSS/header.css"/>
 <link rel="stylesheet" href="../CSS/footer.css"/>
 <link rel="stylesheet" href="../CSS/producto.css"/>
@@ -63,7 +62,7 @@ Total de cafés disponibles:
 
 <section class="products-grid-container">
 
-<xsl:apply-templates select="//cafe">
+<xsl:apply-templates select="cafeteria/cafes/cafe">
 <xsl:sort select="precio" data-type="number"/>
 </xsl:apply-templates>
 
@@ -119,37 +118,42 @@ Correo contacto:
 
 <xsl:template match="cafe">
 
-<div class="product-card">
+<article class="product-card-full">
 
-<img>
-<xsl:attribute name="src">
-<xsl:text>../</xsl:text>
-<xsl:value-of select="imagen"/>
-</xsl:attribute>
-</img>
+<div class="card-image">
 
-<h3>
+<img src="../{imagen}" alt="Imagen del café"/>
+
+<xsl:if test="@destacado='true'">
+<span class="tag-new">Nuevo</span>
+</xsl:if>
+
+</div>
+
+<div class="card-details">
+
+<h2>
 <xsl:value-of select="nombre"/>
-</h3>
+</h2>
 
-<p class="price">
-<xsl:value-of select="precio"/> €
+<p class="description">
+<xsl:value-of select="descripcion"/>
 </p>
 
-<div class="overlay">
+<div class="price-action">
 
-<h3>
-<xsl:value-of select="nombre"/>
-</h3>
+<span class="price">
+<xsl:value-of select="precio"/> €
+</span>
 
-<button class="overlay-button">Agregar al carrito</button>
+<button class="btn-buy">Añadir</button>
+
+</div>
 
 </div>
 
-</div>
+</article>
 
 </xsl:template>
 
 </xsl:stylesheet>
-
-
