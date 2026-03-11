@@ -55,7 +55,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <section class="products-grid-container">
 
-<xsl:apply-templates select="cafeteria/cafes/cafe">
+<xsl:apply-templates select="//cafe">
 <xsl:sort select="precio" data-type="number"/>
 </xsl:apply-templates>
 
@@ -119,4 +119,5 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 </xsl:stylesheet>
+
 
