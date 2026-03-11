@@ -9,15 +9,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="/">
 
-    <section class="products-grid-container">
-
     <p>Total de cafés disponibles: <xsl:value-of select="$totalCafes"/></p>
 
     <xsl:apply-templates select="cafeteria/cafes/cafe">
         <xsl:sort select="precio" data-type="number"/>
     </xsl:apply-templates>
-
-    </section>
 
 </xsl:template>
 
