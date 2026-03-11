@@ -5,15 +5,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html" indent="yes"/>
 
 
-<xsl:variable name="totalCafes" select="count(cafeteria/cafes/cafe)"/>
-
 <xsl:template match="/">
 
-    <p>Total de cafés disponibles: <xsl:value-of select="$totalCafes"/></p>
+    <section class="products-grid-container">
+
+        <p>Total de cafés disponibles: 
+            <xsl:value-of select="$totalCafes"/>
+        </p>
 
     <xsl:apply-templates select="cafeteria/cafes/cafe">
         <xsl:sort select="precio" data-type="number"/>
     </xsl:apply-templates>
+
+    </section>
 
 </xsl:template>
 
