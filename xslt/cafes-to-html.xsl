@@ -21,6 +21,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <title>Productos - Le Nid de Café</title>
 
+<link rel="stylesheet" href="../CSS/index.css"/>
 <link rel="stylesheet" href="../CSS/header.css"/>
 <link rel="stylesheet" href="../CSS/footer.css"/>
 <link rel="stylesheet" href="../CSS/producto.css"/>
@@ -171,4 +172,5 @@ Correo contacto:
 </xsl:template>
 
 </xsl:stylesheet>
+
 
