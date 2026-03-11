@@ -3,12 +3,11 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="html" encoding="UTF-8" indent="yes"
-doctype-system="about:legacy-compat"/>
+<xsl:output method="html" encoding="UTF-8" indent="yes" doctype-system="about:legacy-compat"/>
 
 <xsl:strip-space elements="*"/>
 
-<xsl:variable name="totalCafes" select="count(cafeteria/cafes/cafe)"/>
+<xsl:variable name="totalCafes" select="count(//cafe)"/>
 
 <xsl:template match="/">
 
@@ -18,6 +17,7 @@ doctype-system="about:legacy-compat"/>
 
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <title>Productos - Le Nid de Café</title>
 
@@ -122,7 +122,12 @@ Correo contacto:
 
 <div class="card-image">
 
-<img src="../{imagen}" alt="Imagen del café"/>
+<img alt="Imagen del café">
+<xsl:attribute name="src">
+<xsl:text>../</xsl:text>
+<xsl:value-of select="imagen"/>
+</xsl:attribute>
+</img>
 
 <xsl:if test="@destacado='true'">
 <span class="tag-new">Nuevo</span>
@@ -157,4 +162,3 @@ Correo contacto:
 </xsl:template>
 
 </xsl:stylesheet>
-
