@@ -21,7 +21,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <title>Productos - Le Nid de Café</title>
 
-<link rel="stylesheet" href="../CSS/index.css"/>
 <link rel="stylesheet" href="../CSS/header.css"/>
 <link rel="stylesheet" href="../CSS/footer.css"/>
 <link rel="stylesheet" href="../CSS/producto.css"/>
@@ -124,10 +123,12 @@ Correo contacto:
 <div class="card-image">
 
 <img alt="Imagen del café">
+
 <xsl:attribute name="src">
 <xsl:text>../</xsl:text>
 <xsl:value-of select="imagen"/>
 </xsl:attribute>
+
 </img>
 
 <xsl:if test="@destacado='true'">
@@ -139,17 +140,24 @@ Correo contacto:
 <div class="card-details">
 
 <h2>
+
+<xsl:value-of select="position()"/>.
 <xsl:value-of select="nombre"/>
+
 </h2>
 
 <p class="description">
+
 <xsl:value-of select="descripcion"/>
+
 </p>
 
 <div class="price-action">
 
 <span class="price">
+
 <xsl:value-of select="precio"/> €
+
 </span>
 
 <button class="btn-buy">Añadir</button>
@@ -163,4 +171,3 @@ Correo contacto:
 </xsl:template>
 
 </xsl:stylesheet>
-
