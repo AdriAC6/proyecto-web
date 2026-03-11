@@ -1,166 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.0"
+<xsl:stylesheet 
+version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
 <xsl:output method="html" indent="yes"/>
 
-<xsl:variable name="totalCafes" select="count(cafeteria/cafes/cafe)"/>
 
 <xsl:template match="/">
 
-<html lang="es">
+    <section class="products-grid-container">
 
-<head>
+        <p>Total de cafés disponibles: 
+            <xsl:value-of select="$totalCafes"/>
+        </p>
 
-<meta charset="UTF-8"/>
+    <xsl:apply-templates select="cafeteria/cafes/cafe">
+        <xsl:sort select="precio" data-type="number"/>
+    </xsl:apply-templates>
 
-<title>Productos - Le Nid de Café</title>
-
-<link rel="stylesheet" href="../CSS/index.css"/>
-<link rel="stylesheet" href="../CSS/header.css"/>
-<link rel="stylesheet" href="../CSS/footer.css"/>
-<link rel="stylesheet" href="../CSS/producto.css"/>
-
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header class="main-header">
-<nav>
-
-<a href="../index.html" class="logo">
-<img src="../Img/logo_final.png" alt="Logo Le Nid de Café"/>
-<span>Le Nid de Café</span>
-</a>
-
-<ul class="menu">
-<li><a href="../index.html">Inicio</a></li>
-<li><a href="../datos/cafes.xml" class="active">Productos</a></li>
-<li><a href="../Sites/accesorios.html">Accesorios</a></li>
-<li><a href="../Sites/ofertas.html">Ofertas</a></li>
-<li><a href="../Sites/formulario.html">Contacto</a></li>
-<li><a href="../Sites/login.html" class="btn-login">Iniciar sesión</a></li>
-</ul>
-
-</nav>
-</header>
-
-<!-- TÍTULO -->
-<section class="page-title">
-
-<h1>Nuestros cafés</h1>
-
-<p>Total de cafés disponibles:
-<xsl:value-of select="$totalCafes"/>
-</p>
-
-</section>
-
-<!-- GRID PRODUCTOS -->
-
-<section class="products-grid-container">
-
-<xsl:apply-templates select="cafeteria/cafes/cafe">
-<xsl:sort select="precio" data-type="number"/>
-</xsl:apply-templates>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footer-container">
-
-<div class="footer-secciones">
-<h3>Secciones</h3>
-<ul>
-<li><a href="../index.html">Inicio</a></li>
-<li><a href="../datos/cafes.xml">Productos</a></li>
-<li><a href="../Sites/accesorios.html">Accesorios</a></li>
-<li><a href="../Sites/ofertas.html">Ofertas</a></li>
-</ul>
-</div>
-
-<div class="footer-contacto">
-<h3>Contacto</h3>
-<ul>
-<li>Telefono contacto: 986-203-475</li>
-<li>Correo contacto:
-<a href="mailto:lenidecafe@gmail.com">leniddecafe@gmail.com</a>
-</li>
-<li><a href="../Sites/formulario.html">Contacto</a></li>
-</ul>
-</div>
-
-<div class="footer-secciones">
-<h3>Legal</h3>
-<ul>
-<li>Términos y Condiciones</li>
-<li>Política de Privacidad</li>
-</ul>
-</div>
-
-</div>
-
-<p>Le Nid de Café • © 2025 • Todos los derechos reservados</p>
-
-</footer>
-
-</body>
-
-</html>
+    </section>
 
 </xsl:template>
 
 
 <xsl:template match="cafe">
 
-<article class="product-card-full">
+    <article class="product-card-full">
+    <div class="card-image">
 
-<div class="card-image">
+    <img alt="Imagen del café" src="../{imagen}" />
 
-<img alt="Imagen del café" src="../{imagen}"/>
+    <xsl:if test="@destacado='true'">
+        <span class="tag-new">Nuevo</span>
+    </xsl:if>
 
-<xsl:if test="@destacado='true'">
-<span class="tag-new">Nuevo</span>
-</xsl:if>
+    </div>
 
-</div>
+    <div class="card-details">
 
-<div class="card-details">
+    <h2>
+        <xsl:value-of select="position()"/>. 
+        <xsl:value-of select="nombre"/>
+    </h2>
 
-<h2>
+    <p class="description">
+        <xsl:value-of select="descripcion"/>
+    </p>
 
-<xsl:value-of select="position()"/>.
+    <div class="price-action">
 
-<xsl:value-of select="nombre"/>
+    <span class="price">
+        <xsl:value-of select="precio"/> €
+    </span>
 
-</h2>
+    <button class="btn-buy">Añadir</button>
 
-<p class="description">
+    </div>
 
-<xsl:value-of select="descripcion"/>
+    </div>
 
-</p>
-
-<div class="price-action">
-
-<span class="price">
-
-<xsl:value-of select="precio"/> €
-
-</span>
-
-<button class="btn-buy">Añadir</button>
-
-</div>
-
-</div>
-
-</article>
+    </article>
 
 </xsl:template>
 
